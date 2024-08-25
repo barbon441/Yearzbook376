@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website_Yearbook</title>
+    <link rel="stylesheet" href="css/style1.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-con">
+                <div class="logo">
+                    <a href="index.html">YearBook</a>
+                </div>
+                <ul class="Menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="search">
+                        <form id="searchForm" action="#" method="get">
+                            <input type="text" name="studentID" placeholder="ค้นหารหัสรุ่น" id="searchInput">
+                            <button type="submit">ค้นหา</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+    
+            const input = document.getElementById('searchInput');
+            const query = input.value.trim(); 
+    
+            if (query === '29') {
+                window.location.href = 'index2.html'; 
+            } else {
+                alert('ไม่พบข้อมูล'); 
+            }
+        });
+    </script>
+    
+    <section class="blog">
+        <div class="container">
+            <div class="blog-title">
+                <h1>รุ่นทั้งหมด</h1>
+            </div>
+            <div class="blog-con" id="blogContainer">
+                
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        const container = document.getElementById('blogContainer');
+    
+        for (let i = 1; i <= 30; i++) {
+            const blogItem = document.createElement('div');
+            blogItem.classList.add('blog-item');
+    
+            if (i === 29) {
+                blogItem.innerHTML = `
+                    <img src="person1.jpg" alt="รุ่นที่ ${i}">
+                    <h3>รุ่นที่ ${i}</h3>
+                    <a href="index2.html" class="blog-btn">รายละเอียด</a>
+                `;
+            } else {
+                blogItem.innerHTML = `
+                    <img src="dog2.jpg" alt="รุ่นที่ ${i}">
+                    <h3>รุ่นที่ ${i}</h3>
+                    <a href="#" class="blog-btn">รายละเอียด</a>
+                `;
+            }
+    
+            container.appendChild(blogItem);
+        }
+    </script>
+</body>
+</html>

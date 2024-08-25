@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website_Yearbook</title>
+    <link rel="stylesheet" href="css/style1.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-con">
+                <div class="logo">
+                    <a href="index.html">YearBook</a>
+                </div>
+                <ul class="Menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="search">
+                        <form id="searchForm" action="#" method="get">
+                            <input type="text" name="studentID" placeholder="ค้นหารหัสนักศึกษา" id="searchInput">
+                            <button type="submit">ค้นหา</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+    
+            const input = document.getElementById('searchInput');
+            const query = input.value.trim(); 
+    
+            if (query === '6604101376') {
+                window.location.href = 'index3.html'; 
+            } else {
+                alert('ไม่พบข้อมูล'); 
+            }
+        });
+    </script>
+    
+    
+     
+    <section class="blog">
+        <div class="container">
+            <div class="blog-title">
+                <h1>รายละเอียดรุ่นที่ 29 </h1>
+            </div>
+            <div class="blog-con" id="blogContainer">
+            </div>
+            <div class="back-btn-container">
+                <a href="index.html" class="back-btn">กลับ</a>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        const container = document.getElementById('blogContainer');
+    
+        for (let i = 1; i <= 108; i++) {
+            const blogItem = document.createElement('div');
+            blogItem.classList.add('blog-item');
+    
+            let studentID = '66041013' + String(i).padStart(2, '0'); 
+    
+            blogItem.innerHTML = `
+                <img src="${studentID === '6604101376' ? 'woradech.jpg' : 'dog3.jpg'}" alt="Profile picture of student ID ${studentID}">
+                <h3>รหัสนักศึกษา ${studentID}</h3>
+                <a href="${studentID === '6604101376' ? 'index3.html' : '#'}" class="blog-btn">รายละเอียด</a>
+            `;
+    
+            container.appendChild(blogItem);
+        }
+    </script>
+    
+    <style>
+        .blog-con {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 20px; 
+        }
+    
+        .blog-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+    
+        .blog-item img {
+            width: 100%; 
+            height: auto; 
+        }
+    
+        .back-btn-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+    
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+</html>
